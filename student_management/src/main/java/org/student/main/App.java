@@ -62,10 +62,24 @@ do
 	System.out.println("\t\t Student Address: " + address);
 	System.out.println("\t\t Student Age: " + age);
 	System.out.println("\t\t Student Course: " + course);
-	System.out.println("\t\t Student Fees: " + name ); // mention here fees from the course table
+	System.out.println("\t\t Student Fees: " + total_fees ); // mention here fees from the course table
 	System.out.println("\t\t Student Username: " + user);
 	System.out.println("\t\t Student Password: " + pass);
 	System.out.println("=======================================================");
+	System.out.println("\t\t Enter 1 -> Save the data");
+	System.out.println("\t\t Enter 2 -> Cancel");
+	System.out.println("=======================================================");
+	System.out.println("\t\t Enter the valid Input: ");
+	int savecancel = Integer.parseInt(scanner.next());
+	switch(savecancel) {
+	case 1:
+		savecancel =LoginOperations.save(name,studentid, address, age,course, total_fees, user, pass);
+		
+		break;
+	case 2:
+		System.out.println("\t ...........Done.............");
+		
+	}
 	
 	break;
 	
@@ -102,14 +116,17 @@ do
 				System.out.println("Enter Student ID: ");
 				studentid = scanner.nextInt();
 				System.out.println("Details of Student Id: " + studentid);
-				
+				System.out.println("*******************************************************");
+				System.out.println("********************Student Details*********************");
+				System.out.println("*******************************************************");
+				System.out.println("\t \t "+LoginOperations.stdet());
 				
 				break;
 				
 			case 2:
 				System.out.println("=======================================================");
 				System.out.println("Availabe Courses And Fees Details");
-				System.out.println("000000"); // show the fees table
+				System.out.println("\t\t" + LoginOperations.coursefees()); // show the fees table
 				System.out.println("=======================================================");
 				
 				break;
@@ -138,6 +155,7 @@ do
 		}
 		while(status);
 	}
+	break;
 	default : 
 		System.out.println("=======================================================");
 		System.out.println("\t\t x x x - Invalid Input - x x x ");
